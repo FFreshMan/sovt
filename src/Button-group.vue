@@ -6,7 +6,14 @@
 
 <script lang="js">
   export default{
-
+    mounted() {
+      for(let node of this.$el.children){
+        let name=node.nodeName.toLocaleLowerCase()
+        if(name!=='button'){
+          console.warn(`g-button-group内的元素应为g-button，而你的元素是${name}` )
+        }
+      }
+    }
   }
 </script>
 
