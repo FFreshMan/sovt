@@ -1,17 +1,23 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]:true}">
-    <g-icon v-if="icon" :name="icon" class="icon"></g-icon>
-    <g-icon name="loading" class="loading"></g-icon>
+  <button class="g-button"
+          :class="{[`icon-${iconPosition}`]:true}"
+          @click="$emit('click')" >
+    <g-icon v-if="icon&&!loading" :name="icon" class="icon"></g-icon>
+    <g-icon name="loading" class="loading icon" v-if="loading"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
   </button>
 </template>
-
+//由于g-button是一个复杂标签，所以要内部触发click事件
 <script lang="js">
   export default {
     props: {
       icon: {},
+      loading:{
+        type:Boolean,
+        default:false
+      },
       iconPosition: {
         type: String,
         default: 'left',

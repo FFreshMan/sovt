@@ -14,5 +14,6 @@
 .g-icon{
   height: 1em;
   width: 1em;
+  /*fill:red;*/
 }
 </style>
