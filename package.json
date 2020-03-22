@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/FFreshMan/sovt/issues"
   },
-  "homepage": "https://github.com/FFreshMan/sovt#readme"
+  "homepage": "https://github.com/FFreshMan/sovt#readme",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
 }
