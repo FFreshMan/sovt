@@ -64,5 +64,16 @@ karma start
 ## 11 travis ci
 touch .travis.yml
 travis.com ->your git repository active 
+Chrome->ChromeHeadless
+## 12 npm publish
+```shell script
+npm adduser
+``` 
+```shell script
+.nrmrc taobao-->npm
+```
+```shell script
+npm publish
+```
 
 
