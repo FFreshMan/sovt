@@ -1,28 +1,36 @@
 <template>
   <button class="g-button"
           :class="{[`icon-${iconPosition}`]:true}"
-          @click="$emit('click')" >
-    <g-icon v-if="icon&&!loading" :name="icon" class="icon"></g-icon>
-    <g-icon name="loading" class="loading icon" v-if="loading"></g-icon>
+          @click="$emit('click')">
+    <g-icon v-if="icon&&!loading" :name="icon" class="icon">
+    </g-icon>
+    <g-icon name="loading" class="loading icon" v-if="loading">
+    </g-icon>
     <div class="content">
-      <slot></slot>
+      <slot>
+      </slot>
     </div>
   </button>
 </template>
 //由于g-button是一个复杂标签，所以要内部触发click事件
 <script lang="js">
+  import Icon from './Icon.vue'
+
   export default {
+    components: {
+      'g-icon': Icon
+    },
     props: {
       icon: {},
-      loading:{
-        type:Boolean,
-        default:false
+      loading: {
+        type: Boolean,
+        default: false
       },
       iconPosition: {
         type: String,
         default: 'left',
-        validator(value){
-          return !(value !== 'left' && value !== 'right');
+        validator(value) {
+          return !(value !== 'left' && value !== 'right')
         }
       }
     }
@@ -31,13 +39,14 @@
 
 <style lang="scss" scoped>
   @keyframes spin {
-    0%{
+    0% {
       transform: rotate(0deg);
     }
-    100%{
-      transform:rotate(360deg)
+    100% {
+      transform: rotate(360deg)
     }
   }
+
   .g-button {
     font-size: var(--font-size);
     height: var(--button-height);
@@ -83,8 +92,9 @@
         order: 1;
       }
     }
-    >.loading{
-      animation:spin 1s infinite linear  ;
+
+    > .loading {
+      animation: spin 1s infinite linear;
     }
   }
 </style>

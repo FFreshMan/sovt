@@ -26,6 +26,7 @@ const expect = chai.expect
   })
   vm.$mount()
   let useElement = vm.$el.querySelector('use')
+  console.log(vm.$el)
   let href = useElement.getAttribute('xlink:href')
   expect(href).to.eq('#settings')
   vm.$el.remove()
