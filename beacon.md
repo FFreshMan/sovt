@@ -62,6 +62,7 @@ parcel watch test/* --no-cache
 karma start
 ```
 ## 11 travis ci
-
+touch .travis.yml
+travis.com ->your git repository active 
 
 
