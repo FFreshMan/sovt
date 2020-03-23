@@ -31,6 +31,7 @@ const expect = chai.expect
   vm.$el.remove()
   vm.$destroy()
 }
+//loading测试
 {
   const Constructor = Vue.extend(Button)
   const vm = new Constructor({
