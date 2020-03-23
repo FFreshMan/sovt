@@ -1,13 +1,12 @@
 {
   "name": "sovt",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "这是一个UI框架",
   "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache && karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
-
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/FFreshMan/sovt.git"

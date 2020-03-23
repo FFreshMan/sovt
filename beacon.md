@@ -84,6 +84,14 @@ main:'index.js'-->'dist/index.js'
 ```shell script
 npm publish
 ```
+## 13 yarn link
+```shell script
+yarn link 
+```
+```shell script
+//other project
+yarn link sovt
+```
 
 
 
