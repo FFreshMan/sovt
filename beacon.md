@@ -2,6 +2,7 @@
 ```npm init``` 
 ## 2. git
 ```git init```
+add license to repository(MIT)
 ## 3. vue
 ```npm i vue```
 ## 4. parcel
@@ -73,7 +74,16 @@ npm adduser
 .nrmrc taobao-->npm
 ```
 ```shell script
+ npx parcel build index.js --no-cache --no-minify
+```
+```shell script
+//correction 
+package.json ----
+main:'index.js'-->'dist/index.js'
+```
+```shell script
 npm publish
 ```
+
 
 
