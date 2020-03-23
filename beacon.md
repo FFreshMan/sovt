@@ -35,6 +35,33 @@ const expect = chai.expect
 ```$xslt
 npm i -D karma karma-chrome-launcher karma-mocha karma-sinon-chai mocha sinon sinon-chai karma-chai karma-chai-spies
 ```
+### 1. karma.conf.js 
+* 更正浏览器，chrome捕获失败，重装
+### 2. package.json
+```
+"dev-test": "parcel watch test/* --no-cache & karma start",
+"test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
+```
+### 3. 父组件无法从全局注册获取子组件，需要手动局部注册
+```
+import Icon from './Icon.vue'
+  export default {
+    components: {
+      'g-icon': Icon
+    }
+}
+```
+### 4. rm -rf dist cache
+## 10 dev-test
+```shell script
+//terminal 1
+parcel watch test/* --no-cache
+```
+```shell script
+//terminal 2
+karma start
+```
+## 11 travis ci
 
 
 
