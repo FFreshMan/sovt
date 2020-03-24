@@ -28,35 +28,39 @@
     #app {
       margin: 20px;
     }
-
     body {
       font-size: var(--font-size);
     }
-
-    .icon {
-      height: 1em;
-      width: 1em;
+    .button{
+      margin-bottom: 30px ;
     }
   </style>
 </head>
 <body>
 <div id="app">
-  <g-button icon="settings" icon-position="right" :loading="isLoading" @click="isLoading=!isLoading">
-    按钮
-  </g-button>
-  <g-button icon="settings" icon-position="left" >
-    按钮
-  </g-button>
-  <g-button icon="settings">
-    按钮
-  </g-button>
-  <g-button-group>
-    <g-button icon="left" icon-position="left">按钮</g-button>
-    <g-button icon="right" icon-position="right">按钮</g-button>
-    <g-button icon="right" icon-position="right">按钮</g-button>
-  </g-button-group>
+  <div class="button">
+    <g-button icon="settings" icon-position="right" :loading="isLoading" @click="isLoading=!isLoading">
+      按钮
+    </g-button>
+    <g-button icon="settings" icon-position="left">
+      按钮
+    </g-button>
+    <g-button icon="settings">
+      按钮
+    </g-button>
+    <g-button-group>
+      <g-button icon="left" icon-position="left">按钮</g-button>
+      <g-button icon="right" icon-position="right">按钮</g-button>
+      <g-button icon="right" icon-position="right">按钮</g-button>
+    </g-button-group>
+  </div>
+  <div class="input" style="">
+    <g-input value="111" style="margin-top: 20px;"></g-input>
+    <g-input value="111" style="margin-top: 20px;" disabled></g-input>
+    <g-input value="111" style="margin-top: 20px;" readonly></g-input>
+    <g-input value="111" style="margin-top: 20px;" error="xxx"></g-input>
+  </div>
   <div id="test">
-
   </div>
 </div>
 </body>

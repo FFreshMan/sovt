@@ -96,6 +96,9 @@ yarn link
 //other project
 yarn link sovt
 ```
+## 14 .eslintrc.js
+
+## 15 vue.js devtool
 
 
 
