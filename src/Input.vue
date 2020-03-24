@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper" :class="{error}">
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly">
+    <input :value="value" type="text"
+           :disabled="disabled"
+           @change="$emit('change',$event)"
+           :readonly="readonly">
     <template v-if="error">
       <Icon name="warning" class="error-icon">
       </Icon>
