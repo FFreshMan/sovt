@@ -40,10 +40,6 @@ export default {
   }
 }
 ```
-#### 4. 引入svg symbols
-```html
-<script src="//at.alicdn.com/t/font_1706923_14g4p9o2d4jr.js"></script>
-```
 ## Documentation
 
 ## Questions

@@ -15,7 +15,7 @@ npm i -D parcel-bundler
 node_modules/.bin/parcel //or
 npx parcel...
 //if you add parcel globally
-parcel src/index.html(--no-cache)
+parcel index.html(--no-cache)
 ```
 ## 6.development vue
  ```
@@ -80,6 +80,10 @@ npm adduser
 //correction 
 package.json ----
 main:'index.js'-->'dist/index.js'
+```
+```shell script
+npx parcel index.html 
+//without index.html it will take index.js as main 
 ```
 ```shell script
 npm publish
