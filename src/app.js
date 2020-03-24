@@ -10,7 +10,8 @@ Vue.component('g-button-group', ButtonGroup)
 Vue.component('g-input', Input)
 new Vue({
   data: {
-    isLoading: false
+    isLoading: false,
+    message:'hi'
   },
   methods:{
     inputChange(e){
