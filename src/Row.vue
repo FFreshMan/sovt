@@ -6,7 +6,11 @@
 </template>
 
 <script lang="ts">
+  import Col from './Col.vue';
   export default {
+    components:{
+      'g-col':Col
+    },
     props: {
       gutter: {
         type: [String, Number]
