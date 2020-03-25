@@ -29,10 +29,10 @@ describe('Row', () => {
     })
     console.log(vm.$el.outerHTML)
     setTimeout(() => {
-      const ColElement=document.querySelectorAll('.col')
+      const ColElement = document.querySelectorAll('.col')
       expect(getComputedStyle(ColElement[0]).paddingLeft).to.eq('5px')
       expect(getComputedStyle(ColElement[1]).paddingRight).to.eq('5px')
-      const RowElement=document.querySelectorAll('.row')
+      const RowElement = document.querySelectorAll('.row')
       expect(getComputedStyle(RowElement[0]).marginRight).to.eq('-5px')
       //默认为同步测试，done必须写在之后才不会提前退出
       done()
@@ -40,14 +40,18 @@ describe('Row', () => {
       vm.$destroy()
     }, 0)
   })
-  // it('接受align',()=>{
-  //   const Constructor =Vue.extend(Row)
-  //     const vm = new Constructor({
-  //       propsData: {
-  //         align:'left'
-  //       }
-  //     }).$mount()
-  //     const RowElement = vm.$el.querySelector('.align-left')
-  //     expect(getComputedStyle(RowElement).justifyContent).to.eq('flex-start')
-  // })
+  it('接受align', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const Constructor = Vue.extend(Row)
+    let vm = new Constructor({
+      propsData: {
+        align: 'left'
+      }
+    }).$mount(div)
+    const RowElement = vm.$el
+    expect(getComputedStyle(RowElement).justifyContent).to.equal('flex-start')
+    vm.$el.remove()
+    vm.$destroy()
+  })
 })
