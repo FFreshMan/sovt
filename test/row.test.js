@@ -27,7 +27,6 @@ describe('Row', () => {
     const vm = new Vue({
       el: div
     })
-    console.log(vm.$el.outerHTML)
     setTimeout(() => {
       const ColElement = document.querySelectorAll('.col')
       expect(getComputedStyle(ColElement[0]).paddingLeft).to.eq('5px')
