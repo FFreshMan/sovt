@@ -20,6 +20,7 @@
     props: {
       autoClose: {
         type: [Boolean, Number],
+        default:5,
         validator(value) {
           return value === false || typeof value === 'number';
         }
@@ -65,9 +66,10 @@
       },
       updateLineStyle() {
         //mount时拿不到css高度，得异步执行
-        this.$nextTick(() => {
-          this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
-        });
+        setTimeout(()=>{
+          this.$refs.line.style.height =
+            `${this.$refs.toast.getBoundingClientRect().height}px`
+        },0)
       },
       close() {
         this.$emit('close');
