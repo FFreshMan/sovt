@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="toast">
+  <div class="toast" ref="toast" :class="toastClasses">
     <div class="message">
       <!--    你甚至可以传html-->
       <slot v-if="!enableHtml">
@@ -38,6 +38,18 @@
       enableHtml: {
         type: Boolean,
         default: false
+      },
+      position: {
+        type: String,
+        default: top,
+        validator(value) {
+          return ['top', 'middle', 'bottom'].indexOf(value) >= 0;
+        }
+      }
+    },
+    computed: {
+      toastClasses() {
+        return {[`position-${this.position}`]: true};
       }
     },
     mounted() {
@@ -83,15 +95,28 @@
     border-radius: 5px;
     min-height: $toast-height;
     position: fixed;left: 50%;
-    top: 0;transform: translateX(-50%);font-size: $font-size;
+    transform: translateX(-50%);font-size: $font-size;
     line-height: 1.8;display: flex;align-items: center;
     background: $toast-bg;
     box-shadow: $toast-shadow;
     color: #fff;
     padding: 0 16px;
-    .message{
+
+    &.position-top {
+      top: 0;
+    }
+
+    &.position-bottom {
+      bottom: 0
+    }
+    &.position-middle{
+      top:50%;
+      transform:translateY(-50%) translateX(-50%);
+    }
+    .message {
       padding: 8px;
     }
+
     .close {
       padding-left: 16px;
       flex-shrink: 0;

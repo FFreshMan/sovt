@@ -42,7 +42,9 @@ new Vue({
           callback(vm){
           },
         },
-        enableHtml: true
+        enableHtml: true,
+        position:'bottom',
+        autoClose: false
       })
     }
   },
