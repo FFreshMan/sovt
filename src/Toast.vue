@@ -19,12 +19,10 @@
     name: 'g-toast',
     props: {
       autoClose: {
-        type: Boolean,
-        default: true
-      },
-      autoCloseDelay: {
-        type: Number,
-        default: 50
+        type: [Boolean, Number],
+        validator(value) {
+          return value === false || typeof value === 'number';
+        }
       },
       closeButton: {
         //props若是对象则需用函数返回
@@ -42,7 +40,7 @@
       },
       position: {
         type: String,
-        default: top,
+        default: 'top',
         validator(value) {
           return ['top', 'middle', 'bottom'].indexOf(value) >= 0;
         }
@@ -62,7 +60,7 @@
         if (this.autoClose) {
           setTimeout(() => {
             this.close();
-          }, this.autoCloseDelay * 1000);
+          }, this.autoClose * 1000);
         }
       },
       updateLineStyle() {
@@ -94,23 +92,27 @@
   $toast-bg: rgba(0, 0, 0, 0.75);
   $toast-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   @keyframes fade-in {
-    0%{opacity: 0;}
-    100%{opacity: 1;}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
   }
+
   @keyframes slide-up {
     0% {opacity: 0; transform: translateY(100%);}
     100% {opacity: 1;transform: translateY(0%);}
   }
+
   @keyframes slide-down {
     0% {opacity: 0; transform: translateY(-100%);}
     100% {opacity: 1;transform: translateY(0%);}
   }
-  .wrapper{
+
+  .wrapper {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    $animation-duration:300ms;
-    >.toast {
+    $animation-duration: 300ms;
+
+    > .toast {
       border-radius: 5px;
       min-height: $toast-height;font-size: $font-size;
       line-height: 1.8;display: flex;align-items: center;
@@ -118,21 +120,26 @@
       box-shadow: $toast-shadow;
       color: #fff;
       padding: 0 16px;
+
       .message {
         padding: 8px;
       }
+
       .close {
         padding-left: 16px;
         flex-shrink: 0;
       }
+
       .line {
         border-left: 2px solid #666;
         margin-left: 16px;
       }
     }
+
     &.position-top {
       top: 0;
-      >.toast {
+
+      > .toast {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         animation: slide-down $animation-duration;
@@ -141,7 +148,8 @@
 
     &.position-bottom {
       bottom: 0;
-      >.toast {
+
+      > .toast {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         animation: slide-up $animation-duration;
@@ -151,13 +159,12 @@
     &.position-middle {
       top: 50%;
       transform: translateY(-50%) translateX(-50%);
-      >.toast {
+
+      > .toast {
         animation: fade-in $animation-duration;
       }
     }
   }
-
-
 
 
 </style>
