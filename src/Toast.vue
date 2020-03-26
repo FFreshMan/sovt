@@ -71,6 +71,7 @@
         });
       },
       close() {
+        this.$emit('close');
         this.$el.remove();
         //destroy并不会删除dom元素
         this.$destroy();
@@ -109,10 +110,12 @@
     &.position-bottom {
       bottom: 0
     }
-    &.position-middle{
-      top:50%;
-      transform:translateY(-50%) translateX(-50%);
+
+    &.position-middle {
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
     }
+
     .message {
       padding: 8px;
     }
