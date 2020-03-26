@@ -32,10 +32,18 @@ new Vue({
     message:'hi'
   },
   created(){
+
   },
   methods:{
     showToast(){
-      this.$toast('wwwww')
+      this.$toast('<strong style="color:red">我娃哈哈的</strong>',{
+        closeButton:{
+          text:'测试',
+          callback(vm){
+          },
+        },
+        enableHtml: true
+      })
     }
   },
   el: '#app',

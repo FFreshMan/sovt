@@ -1,8 +1,12 @@
 <template>
-  <div class="toast">
-    <slot>
-    </slot>
-    <div class="line"></div>
+  <div class="toast" ref="toast">
+    <div class="message">
+      <!--    你甚至可以传html-->
+      <slot v-if="!enableHtml">
+      </slot>
+      <div v-else v-html="$slots.default[0]"></div>
+    </div>
+    <div class="line" ref="line"></div>
     <span v-if="closeButton" class="close" @click="onClickClose">
       {{closeButton.text}}
     </span>
@@ -26,27 +30,44 @@
         type: Object,
         default: () => {
           return {
-            text: '关闭', callback: (toast) => {
-              toast.close();
-            }
+            text: '关闭', callback: undefined
           };
         }
+      },
+      //此属性用于控制是否启动HTML
+      enableHtml: {
+        type: Boolean,
+        default: false
       }
     },
     mounted() {
-      if (this.autoClose) {
-        setTimeout(() => {
-          this.close();
-        }, this.autoCloseDelay * 1000);
-      }
+      this.updateLineStyle();
+      this.executeAutoClose();
     },
     methods: {
+      executeAutoClose() {
+        if (this.autoClose) {
+          setTimeout(() => {
+            this.close();
+          }, this.autoCloseDelay * 1000);
+        }
+      },
+      updateLineStyle() {
+        //mount时拿不到css高度，得异步执行
+        this.$nextTick(() => {
+          this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+        });
+      },
       close() {
         this.$el.remove();
+        //destroy并不会删除dom元素
         this.$destroy();
       },
       onClickClose() {
-        this.closeButton.callback(this);
+        if (this.closeButton && typeof this.closeButton.callback === 'function') {
+          //将当前实例返回给用户
+          this.closeButton.callback(this);
+        }
         this.close();
       }
     }
@@ -60,7 +81,7 @@
   $toast-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   .toast {
     border-radius: 5px;
-    height: $toast-height;
+    min-height: $toast-height;
     position: fixed;left: 50%;
     top: 0;transform: translateX(-50%);font-size: $font-size;
     line-height: 1.8;display: flex;align-items: center;
@@ -68,16 +89,19 @@
     box-shadow: $toast-shadow;
     color: #fff;
     padding: 0 16px;
+    .message{
+      padding: 8px;
+    }
+    .close {
+      padding-left: 16px;
+      flex-shrink: 0;
+    }
+
+    .line {
+      border-left: 2px solid #666;
+      margin-left: 16px;
+    }
   }
 
-  .close {
-    padding-left: 16px;
-  }
-
-  .line {
-    border-left: 2px solid #666;
-    margin-left: 16px;
-    height: 100%;
-  }
 
 </style>
