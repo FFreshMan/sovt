@@ -1,15 +1,16 @@
 <template>
-  <div class="toast" ref="toast" :class="toastClasses">
-    <div class="message">
-      <!--    你甚至可以传html-->
-      <slot v-if="!enableHtml">
-      </slot>
-      <div v-else v-html="$slots.default[0]"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml">
+        </slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
+      <div class="line" ref="line"></div>
+      <span class="close" v-if="closeButton" @click="onClickClose">
+        {{closeButton.text}}
+      </span>
     </div>
-    <div class="line" ref="line"></div>
-    <span v-if="closeButton" class="close" @click="onClickClose">
-      {{closeButton.text}}
-    </span>
   </div>
 </template>
 
@@ -92,73 +93,71 @@
   $toast-height: 40px;
   $toast-bg: rgba(0, 0, 0, 0.75);
   $toast-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
-  @keyframes toast-bottom-fade-in {
-    0%{
-      opacity: 0;transform: translateY(100%) translateX(-50%);
-    }
-    100%{
-      opacity: 1;transform: translateY(0) translateX(-50%);
-    }
+  @keyframes fade-in {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
   }
-  @keyframes toast-middle-fade-in {
-    0%{
-      opacity: 0;transform: translateY(100%) translateX(-50%);
-    }
-    100%{
-      opacity: 1;transform: translateY(-50%) translateX(-50%);
-    }
+  @keyframes slide-up {
+    0% {opacity: 0; transform: translateY(100%);}
+    100% {opacity: 1;transform: translateY(0%);}
   }
-  @keyframes toast-top-fade-in {
-    0%{
-      opacity: 0;transform: translateY(-100%) translateX(-50%);
-    }
-    100%{
-      opacity: 1;transform: translateY(0) translateX(-50%);
-    }
+  @keyframes slide-down {
+    0% {opacity: 0; transform: translateY(-100%);}
+    100% {opacity: 1;transform: translateY(0%);}
   }
-  .toast {
-    border-radius: 5px;
-    min-height: $toast-height;
-    position: fixed;left: 50%;
-    ;font-size: $font-size;
-    line-height: 1.8;display: flex;align-items: center;
-    background: $toast-bg;
-    box-shadow: $toast-shadow;
-    color: #fff;
-    padding: 0 16px;
-
+  .wrapper{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    $animation-duration:300ms;
+    >.toast {
+      border-radius: 5px;
+      min-height: $toast-height;font-size: $font-size;
+      line-height: 1.8;display: flex;align-items: center;
+      background: $toast-bg;
+      box-shadow: $toast-shadow;
+      color: #fff;
+      padding: 0 16px;
+      .message {
+        padding: 8px;
+      }
+      .close {
+        padding-left: 16px;
+        flex-shrink: 0;
+      }
+      .line {
+        border-left: 2px solid #666;
+        margin-left: 16px;
+      }
+    }
     &.position-top {
-      animation: toast-top-fade-in 1s;
       top: 0;
-      transform: translateX(-50%);
+      >.toast {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        animation: slide-down $animation-duration;
+      }
     }
 
     &.position-bottom {
-      transform: translateX(-50%);
-      animation: toast-bottom-fade-in 1s;
-      bottom: 0
+      bottom: 0;
+      >.toast {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        animation: slide-up $animation-duration;
+      }
     }
 
     &.position-middle {
-      animation: toast-middle-fade-in 1s;
       top: 50%;
       transform: translateY(-50%) translateX(-50%);
-    }
-
-    .message {
-      padding: 8px;
-    }
-
-    .close {
-      padding-left: 16px;
-      flex-shrink: 0;
-    }
-
-    .line {
-      border-left: 2px solid #666;
-      margin-left: 16px;
+      >.toast {
+        animation: fade-in $animation-duration;
+      }
     }
   }
+
+
 
 
 </style>

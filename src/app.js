@@ -43,7 +43,7 @@ new Vue({
           },
         },
         enableHtml: true,
-        position:'top',
+        position:'middle',
         autoClose: false
       })
     }
