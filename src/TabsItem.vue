@@ -27,7 +27,8 @@
     computed:{
       classes(){
         return{
-          active:this.active
+          active:this.active,
+          disabled: this.disabled
         }
       }
     },
@@ -38,6 +39,7 @@
     },
     methods: {
       changeSelected() {
+        if(this.disabled){return}
         this.eventBus.$emit('update:selected', this.name,this);
       }
     }
@@ -46,6 +48,7 @@
 
 <style lang="scss" scoped>
   $active-bg:#66ccff;
+  $disabled-color:grey;
   .tabs-item {
     display: flex;
     flex-shrink: 0;
@@ -55,6 +58,9 @@
     align-items: center;
     &.active{
       color: $active-bg;
+    }
+    &.disabled{
+      color: $disabled-color;
     }
   }
 </style>
