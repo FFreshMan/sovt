@@ -56,6 +56,9 @@ new Vue({
         position:'middle',
         autoClose: false
       })
+    },
+    yyy(name){
+      console.log(name)
     }
   },
   el: '#app',
