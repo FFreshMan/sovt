@@ -8,7 +8,7 @@
 <script lang="ts">
 
   export default{
-
+    inject:['eventBus'],
   }
 </script>
 

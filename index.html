@@ -41,26 +41,26 @@
       border: 1px solid #666;
       min-height: 100px;
     }
+    .red{
+      background: red;
+    }
   </style>
 </head>
 <body>
 <div id="app">
   <g-tabs selected="tab3" direction="horizontal">
-    <g-tabs-head>
+    <g-tabs-head class="red">
+<!--      会和内部class叠加-->
       <template slot="actions">button</template>
-      <g-tabs-item name="tab1" disabled="false">tab1</g-tabs-item>
+      <g-tabs-item name="tab1" :disabled="false">tab1</g-tabs-item>
       <g-tabs-item name="tab2">tab2</g-tabs-item>
       <g-tabs-item name="tab3">tab3</g-tabs-item>
+    </g-tabs-head>
       <g-tabs-body>
         <g-tabs-pane name="tp1">tp1</g-tabs-pane>
-      </g-tabs-body>
-      <g-tabs-body>
         <g-tabs-pane name="tp2">tp2</g-tabs-pane>
-      </g-tabs-body>
-      <g-tabs-body>
         <g-tabs-pane name="tp3">tp3</g-tabs-pane>
       </g-tabs-body>
-    </g-tabs-head>
   </g-tabs>
 <!--  <button @click="showToast">111111</button>-->
 <!--  <g-layout style="height: 100vh;">-->
