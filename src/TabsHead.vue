@@ -29,14 +29,15 @@
 
 <style lang="scss" scoped>
   $tab-height: 40px;
-  $blue: blue;
+  $blue: #66ccff;
+  $border-color:#ddd;
   .tabs-header {
     display: flex;
     height: $tab-height;
     justify-content: flex-start;
     align-items: center;
     position: relative;
-
+    border-bottom: 1px solid $border-color;
     .tabs-header-actions {
       margin-left: auto;
       margin-right: 2em;

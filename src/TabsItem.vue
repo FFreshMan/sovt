@@ -45,7 +45,7 @@
 </script>
 
 <style lang="scss" scoped>
-  $active-bg:blue;
+  $active-bg:#66ccff;
   .tabs-item {
     display: flex;
     flex-shrink: 0;
