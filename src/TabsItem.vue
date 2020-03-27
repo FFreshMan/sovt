@@ -7,6 +7,7 @@
 
 <script lang="ts">
   export default {
+    name:'g-tabs-item',
     inject: ['eventBus'],
     data() {
       return {
@@ -37,18 +38,23 @@
     },
     methods: {
       changeSelected() {
-        this.eventBus.$emit('update:selected', this.name);
+        this.eventBus.$emit('update:selected', this.name,this);
       }
     }
   };
 </script>
 
 <style lang="scss" scoped>
+  $active-bg:blue;
   .tabs-item {
+    display: flex;
     flex-shrink: 0;
     padding: 0 3em;
+    cursor: pointer;
+    height: 100%;
+    align-items: center;
     &.active{
-      border: 1px solid red;
+      color: $active-bg;
     }
   }
 </style>

@@ -40,7 +40,7 @@
     display: none;
     &.active{
       display: block;
-      border: 1px solid red;
+      color: red;
     }
   }
 </style>

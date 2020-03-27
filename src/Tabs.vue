@@ -34,8 +34,16 @@
     },
     mounted() {
       // this.$emit('update:selected', 'se');
-      this.eventBus.$emit('update:selected', this.selected);
       //这两个是有 区别的，前者是自己触发事件，后者是new Vue对象触发的事件
+      this.$children.forEach((vm)=>{
+        if(vm.$options.name==='g-tabs-head'){
+          vm.$children.forEach((childvm)=>{
+            if(childvm.$options.name==='g-tabs-item'&&childvm.name===this.selected){
+              this.eventBus.$emit('update:selected', this.selected,childvm);
+            }
+          })
+        }
+      })
     }
   };
 </script>
