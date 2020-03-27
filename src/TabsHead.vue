@@ -12,13 +12,14 @@
 
 <script lang="ts">
   export default {
-    name:'g-tabs-head',
+    name: 'g-tabs-head',
     inject: ['eventBus'],
-    created() {
-      this.eventBus.$on('update:selected',(name,vm)=>{
-        console.log(name);
-        console.log(vm.$el);
-      })
+    mounted() {
+      this.eventBus.$on('update:selected', (name, vm) => {
+        let {width, height, top, left} = vm.$el.getBoundingClientRect();
+        this.$refs.line.style.width = `${width}px`;
+        this.$refs.line.style.left = `${left}px`;
+      });
 
       // this.$emit('update:selected', 'head');
       //触发同名事件只被自己监听，其父组件并不会监听到，即不冒泡
@@ -45,7 +46,7 @@
       position: absolute;
       bottom: 0;
       border-bottom: 1px solid $blue;
-      width: 100px;
+      transition: all 350ms;
     }
   }
 </style>
