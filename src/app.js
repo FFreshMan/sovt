@@ -30,11 +30,11 @@ Vue.component('g-header', Header)
 Vue.component('g-footer', Footer)
 Vue.component('g-content',Content)
 Vue.component('g-toast',Toast)
-Vue.component('g-tabs',Tabs)
 Vue.component('g-tabs-head',TabsHead)
 Vue.component('g-tabs-item',TabsItem)
 Vue.component('g-tabs-body',TabsBody)
 Vue.component('g-tabs-pane',TabsPane)
+Vue.component('g-tabs',Tabs)
 Vue.use(plugin)
 new Vue({
   data: {

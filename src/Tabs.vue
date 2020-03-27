@@ -7,7 +7,6 @@
 
 <script lang="ts">
   import Vue from 'vue';
-
   export default {
     props: {
       selected: {
@@ -35,6 +34,10 @@
     mounted() {
       // this.$emit('update:selected', 'se');
       //这两个是有 区别的，前者是自己触发事件，后者是new Vue对象触发的事件
+      if(this.$children.length===0){
+       console&&console.warn&&console.warn('需要一个子组件,tabs的子组件应为tabs-head和tabs-body')
+      }
+      //this.$children只能获取到子组件，而不是子元素
       this.$children.forEach((vm)=>{
         if(vm.$options.name==='g-tabs-head'){
           vm.$children.forEach((childvm)=>{
