@@ -61,7 +61,6 @@
       positionContent() {
         const {contentWrapper, triggerWrapper} = this.$refs;
         document.body.appendChild(contentWrapper);
-        console.log('我加了');
         const {width, height, top, left} = triggerWrapper.getBoundingClientRect();
         const {height: height2} = contentWrapper.getBoundingClientRect();
         let positions = {
@@ -149,11 +148,13 @@
       transform: translateY(-100%);
 
       &::before {
+        border-bottom: none;
         border-top-color: black;
         top: 100%;
       }
 
       &::after {
+        border-bottom: none;
         border-top-color: white;
         top: calc(100% - 1px);
       }
@@ -163,11 +164,13 @@
       margin-top: 10px;
 
       &::before {
+        border-top: none;
         border-bottom-color: black;
         bottom: 100%;
       }
 
       &::after {
+        border-top: none;
         border-bottom-color: white;
         bottom: calc(100% - 1px);
       }
@@ -178,6 +181,7 @@
       margin-left: -10px;
 
       &::before, &::after {
+        border-right: none;
         transform: translateY(-50%);
         top: 50%;
       }
@@ -197,6 +201,7 @@
       margin-left: 10px;
 
       &::before, &::after {
+        border-left: none;
         transform: translateY(-50%);
         top: 50%;
       }
