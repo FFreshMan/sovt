@@ -26,7 +26,7 @@
     }
 
     #app {
-      /*margin: 20px;*/
+      margin: 100px;
     }
 
     body {
@@ -41,36 +41,34 @@
       border: 1px solid #666;
       min-height: 100px;
     }
-    button{
-      border: 1px solid
-    }
+
   </style>
 </head>
 <body>
 <div id="app">
-  <g-popover position="right">
+  <g-popover position="right" >
     <template slot="content" >
       ddd
     </template>
-      <button>trigger</button>
+      <g-button>点点</g-button>
   </g-popover>
-  <g-popover position="left">
+  <g-popover position="left" trigger="hover">
     <template slot="content" >
       ddd
     </template>
-    <button>trigger</button>
+    <g-button>点点</g-button>
   </g-popover>
-  <g-popover position="top">
+  <g-popover position="top" trigger="hover">
     <template slot="content" >
       ddd
     </template>
-    <button>trigger</button>
+    <g-button>点点</g-button>
   </g-popover>
-  <g-popover position="bottom">
+  <g-popover position="bottom" trigger="hover">
     <template slot="content" >
       ddd
     </template>
-    <button>trigger</button>
+    <g-button>点点</g-button>
   </g-popover>
 <!--  <g-tabs selected="tab3" direction="horizontal" @update:selected="yyy">-->
 <!--    <g-tabs-head >-->

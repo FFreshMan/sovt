@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible"
          :class="{[`position-${position}`]:true}">
       <slot name="content">
@@ -27,17 +27,41 @@
         validator(value) {
           return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0;
         }
+      },
+      trigger: {
+        type: String,
+        default: 'click',
+        validator(value) {
+          return ['hover', 'click'].indexOf(value) >= 0;
+        }
       }
-    }
-    ,
-    mounted() {
+    },
 
+    computed: {
+
+    },
+    mounted() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.addEventListener('click', this.onClick);
+      } else {
+        this.$refs.popover.addEventListener('mouseenter', this.openPop);
+        this.$refs.popover.addEventListener('mouseleave', this.close);
+      }
+    },
+    destroyed(): void {
+      if (this.trigger === 'click') {
+        this.$refs.popover.removeEventListener('click', this.onClick);
+      } else {
+        this.$refs.popover.removeEventListener('mouseenter', this.openPop);
+        this.$refs.popover.removeEventListener('mouseleave', this.close);
+      }
     },
     //@click.stop阻止冒泡
     methods: {
       positionContent() {
         const {contentWrapper, triggerWrapper} = this.$refs;
         document.body.appendChild(contentWrapper);
+        console.log('我加了');
         const {width, height, top, left} = triggerWrapper.getBoundingClientRect();
         const {height: height2} = contentWrapper.getBoundingClientRect();
         let positions = {
@@ -67,10 +91,11 @@
         this.close();
       },
       openPop() {
+        //用setTimeout滑动过快会出bug
         this.visible = true;
-        setTimeout(() => {
-          this.positionContent();
+       this.$nextTick(() => {
           document.addEventListener('click', this.onClickDocument);
+          this.positionContent();
         });
       },
       close() {
@@ -98,7 +123,6 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-    margin: 30px 50px;
   }
 
   .content-wrapper {
