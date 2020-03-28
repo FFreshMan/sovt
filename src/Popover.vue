@@ -1,11 +1,13 @@
 <template>
   <div class="popover" @click.stop="xxx">
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content">
       </slot>
     </div>
+    <span ref="triggerWrapper">
     <slot>
     </slot>
+    </span>
   </div>
 </template>
 
@@ -17,13 +19,21 @@
         visible: false
       };
     },
+    mounted() {
+
+    },
     methods: {
       //@click.stop阻止冒泡
       xxx() {
         this.visible = !this.visible;
         if (this.visible === true) {
-          //不异步会同时执行两个click
-         setTimeout(() => {
+          this.$nextTick(() => {
+            document.body.appendChild(this.$refs.contentWrapper);
+            // getBoundingClientRect是可视区域，absolute相对body
+            let {width,height,top,left}=this.$refs.triggerWrapper.getBoundingClientRect();
+            this.$refs.contentWrapper.style.left=`${left+window.scrollX}px`;
+            this.$refs.contentWrapper.style.top=`${top+window.scrollY}px`;
+            console.log(this.$refs.contentWrapper.style.top);
             let eventHandler = () => {
               this.visible = false;
               document.removeEventListener('click', eventHandler);
@@ -45,13 +55,11 @@
     border: 1px solid;
     position: relative;
     margin: 30px 50px;
-
-    .content-wrapper {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      border: 1px solid red;
-      box-shadow: $box-shadow-color;
-    }
   }
+  .content-wrapper {
+    position: absolute;
+    left: 0;
+    box-shadow: $box-shadow-color;
+    transform: translateY(-100%);
+    }
 </style>
