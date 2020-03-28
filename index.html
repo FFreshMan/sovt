@@ -46,11 +46,13 @@
 </head>
 <body>
 <div id="app">
-  <g-popover position="right" >
-    <template slot="content" >
-      ddd
+  <g-popover position="right">
+    <template slot="content" slot-scope="{zero}">
+      通过slot-scope可以得到返回值
+      {{zero}}
+      <g-button @click="zero">关闭</g-button>
     </template>
-      <g-button>点点</g-button>
+    <g-button >点点</g-button>
   </g-popover>
   <g-popover position="left" trigger="hover">
     <template slot="content" >
