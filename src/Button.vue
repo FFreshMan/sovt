@@ -1,5 +1,5 @@
 <template>
-  <button class="g-button fix"
+  <button class="g-button"
           :class="{[`icon-${iconPosition}`]:true}"
           @click="$emit('click')">
     <g-icon v-if="icon&&!loading" :name="icon" class="icon">
@@ -88,6 +88,7 @@
       &:focus {
         outline: none;
       }
+    }
 
       &.icon-right {
         > .icon {
@@ -105,5 +106,4 @@
         animation: spin 1s infinite linear;
       }
     }
-  }
 </style>

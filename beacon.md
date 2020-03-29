@@ -101,4 +101,66 @@ yarn link sovt
 ## 15 vue.js devtool
 
 
+## how to use vuepress
+### 1. install
+```shell script
+npm install -D vuepress
+```
+### 2. dir
+```shell script
+mkdir docs
+```
+### 3. README
+```shell script
+echo '# Hello VuePress!' > docs/README.md
+```
+### 4. serve
+```shell script
+npx vuepress dev docs
+```
+### 5. some script  
+```shell script
+    {
+      "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+      }
+```
+### 6. .vuepress/config.js
+```shell script
+module.exports = {
+  title: 'sovt UI',
+  description: '一个简约实用的UI框架',
+  themeConfig: {
+    nav: [
+      {text: '主页', link: '/'},
+      {text: '文档', link: '/guide/'},
+      {text: '交流', link: 'https://google.com'},
+    ],
+    sidebar: [
+      {
+        title: '入门',
+        children: [
+          '/install/',
+          '/get-started/',
+    ]
+      },
+      {
+        title: '组件',
+        children: ['/components/button']
+      },
+    ]
+  }
+```
+### 7. xxxx.md
+```shell script
+---
+title:xxx
+---
+```
+### 8. sass-loader node-sass
+```shell script
+npm i -D sass-loader node-sass
+```
+
 

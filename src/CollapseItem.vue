@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
-  $border-color: #ddd;
+  $grey: #ddd;
   $border-radius: 4px;
   @keyframes shrink {
     0% {
@@ -63,13 +63,14 @@
 
   .collapse-item {
     > .title {
-      border: 1px solid $border-color;
+      border: 1px solid $grey;
       margin-left: -1px;
       border-top: none;
       margin-right: -1px;
       display: flex;
       align-items: center;
       padding: 0 8px;
+      background: lighten($grey, 8%);
     }
 
     &:first-child {
@@ -94,7 +95,7 @@
     > .content {
 
       padding: 8px;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $grey;
     }
   }
 </style>
