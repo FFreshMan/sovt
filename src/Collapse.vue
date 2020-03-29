@@ -21,7 +21,7 @@
     },
     data() {
       return {
-        eventBus: new Vue()
+        eventBus: new Vue(),
       };
     },
     provide() {
@@ -33,6 +33,9 @@
       this.eventBus.$emit('update:selected', this.selected);
       this.eventBus.$on('update:selected', (name) => {
         this.$emit('update:selected', name);
+      });
+      this.$children.forEach((vm) => {
+        vm.single = this.single
       });
     }
   };

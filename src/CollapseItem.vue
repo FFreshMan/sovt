@@ -18,23 +18,26 @@
         type: String,
         required: true
       },
-      name:{
-        type:String,
-        required:true
+      name: {
+        type: String,
+        required: true
       }
     },
     data() {
       return {
-        open: false
+        open: false,
+        single: false
       };
     },
     inject: ['eventBus'],
     mounted() {
       this.eventBus && this.eventBus.$on('update:selected', (name) => {
         if (name !== this.name) {
-          this.close();
-        }else{
-          this.show()
+          if(this.single){
+            this.close();
+          }
+        } else {
+          this.show();
         }
       });
     },
@@ -49,8 +52,8 @@
       close() {
         this.open = false;
       },
-      show(){
-        this.open=true
+      show() {
+        this.open = true;
       }
     }
   };
