@@ -1,4 +1,5 @@
 module.exports = {
+  base:'/sovt/',
   title: 'sovt UI',
   description: '一个简约实用的UI框架',
   themeConfig: {
