@@ -46,7 +46,7 @@ new Vue({
   data: {
     isLoading: false,
     message:'hi',
-    selectedTab:'一'
+    selectedTab:['1','2','3']
   },
   created(){
 

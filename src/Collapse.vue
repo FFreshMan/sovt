@@ -16,12 +16,13 @@
         default: false
       },
       selected: {
-        type: String
+        type: Array
       }
     },
     data() {
       return {
         eventBus: new Vue(),
+        selectedArray: []
       };
     },
     provide() {
@@ -31,11 +32,25 @@
     },
     mounted() {
       this.eventBus.$emit('update:selected', this.selected);
-      this.eventBus.$on('update:selected', (name) => {
-        this.$emit('update:selected', name);
+      let selectedArray = JSON.parse(JSON.stringify(this.selected));
+      this.eventBus.$on('update:addSelected', (name) => {
+        if (this.single) {
+          selectedArray = [name];
+        } else {
+          selectedArray.push(name);
+        }
+        this.eventBus.$emit('update:selected', selectedArray);
+        this.$emit('update:selected', selectedArray);
       });
-      this.$children.forEach((vm) => {
-        vm.single = this.single
+      this.eventBus.$on('update:removeSelected', (name) => {
+        if(this.single){
+          selectedArray=[name]
+        }else{
+          let index = selectedArray.indexOf(name);
+          selectedArray.splice(index, 1);
+        }
+        this.eventBus.$emit('update:selected', selectedArray);
+        this.$emit('update:selected', selectedArray);
       });
     }
   };

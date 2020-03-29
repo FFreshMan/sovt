@@ -47,14 +47,14 @@
 <body>
 <div id="app">
   {{selectedTab}}
-  <g-collapse :single="true">
-    <g-collapse-item title="标题1" name="一">
+  <g-collapse :selected.sync="selectedTab" single >
+    <g-collapse-item title="标题1" name="1">
       第一
     </g-collapse-item>
-    <g-collapse-item title="标题2" name="二">
+    <g-collapse-item title="标题2" name="2">
       第二
     </g-collapse-item>
-    <g-collapse-item title="标题3" name="三">
+    <g-collapse-item title="标题3" name="3">
       第三
     </g-collapse-item>
   </g-collapse>
