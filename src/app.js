@@ -45,7 +45,8 @@ Vue.use(plugin)
 new Vue({
   data: {
     isLoading: false,
-    message:'hi'
+    message:'hi',
+    selectedTab:'一'
   },
   created(){
 

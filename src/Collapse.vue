@@ -10,13 +10,13 @@
 
   export default {
     name: 'g-collapse',
-    props:{
-      single:{
-        type:Boolean,
-        default:false
+    props: {
+      single: {
+        type: Boolean,
+        default: false
       },
-      selected:{
-        type:String
+      selected: {
+        type: String
       }
     },
     data() {
@@ -25,12 +25,15 @@
       };
     },
     provide() {
-        return {
-          eventBus: this.eventBus
-      }
+      return {
+        eventBus: this.eventBus
+      };
     },
-    mounted(){
-        this.eventBus.$emit('update:selected',this.selected)
+    mounted() {
+      this.eventBus.$emit('update:selected', this.selected);
+      this.eventBus.$on('update:selected', (name) => {
+        this.$emit('update:selected', name);
+      });
     }
   };
 </script>
