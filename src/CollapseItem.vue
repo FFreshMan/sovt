@@ -1,6 +1,6 @@
 <template>
   <div class="collapse-item">
-    <div class="title">
+    <div class="title" @click="onShow">
       {{title}}
     </div>
     <div class="content" v-if="open">
@@ -19,9 +19,30 @@
         required: true
       }
     },
-    data(){
-      return{
-        open:false
+    data() {
+      return {
+        open: false
+      };
+    },
+    inject: ['eventBus'],
+    mounted() {
+      this.eventBus && this.eventBus.$on('update:selected', (vm) => {
+        if (vm !== this) {
+          this.close();
+        }
+      });
+    },
+    methods: {
+      onShow() {
+        if (this.open) {
+          this.close();
+        } else {
+          this.open = true;
+          this.eventBus && this.eventBus.$emit('update:selected', this);
+        }
+      },
+      close() {
+        this.open = false;
       }
     }
   };
@@ -30,6 +51,15 @@
 <style lang="scss" scoped>
   $border-color: #ddd;
   $border-radius: 4px;
+  @keyframes shrink {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(50%);
+    }
+  }
+
   .collapse-item {
     > .title {
       border: 1px solid $border-color;
@@ -47,17 +77,21 @@
         border-top-right-radius: $border-radius;
       }
     }
-    &:last-child{
-      >.title:last-child{
+
+    &:last-child {
+      > .title:last-child {
         border-bottom-left-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
       }
-      >.content:last-child{
+
+      > .content:last-child {
         border-bottom-left-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
       }
     }
-    >.content{
+
+    > .content {
+
       padding: 8px;
       border-bottom: 1px solid $border-color;
     }

@@ -1,23 +1,42 @@
 <template>
   <div class="collapse">
-  <slot>
-  </slot>
+    <slot>
+    </slot>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-  name:'g-collapse',
+  import Vue from 'vue';
 
-  }
+  export default {
+    name: 'g-collapse',
+    props:{
+      single:{
+        type:Boolean,
+        default:false
+      }
+    },
+    data() {
+      return {
+        eventBus: new Vue()
+      };
+    },
+    provide() {
+      if(this.single){
+        return {
+          eventBus: this.eventBus
+        };
+      }
+    }
+  };
 </script>
 
 <style lang="scss" scoped>
-  $border-color:#ddd;
-  $border-radius:4px;
-.collapse{
-  border: 1px solid $border-color;
-  border-bottom: none;
-  border-radius: $border-radius;
-}
+  $border-color: #ddd;
+  $border-radius: 4px;
+  .collapse {
+    border: 1px solid $border-color;
+    border-bottom: none;
+    border-radius: $border-radius;
+  }
 </style>
