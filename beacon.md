@@ -168,5 +168,10 @@ npm i -D sass-loader node-sass
     <button-demo></button-demo>
 </ClientOnly>
 ```
+### 10. base
+```shell script
+base:'/sovt/'
+```
+### deploy
 
 
