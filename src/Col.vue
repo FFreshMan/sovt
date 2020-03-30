@@ -2,7 +2,6 @@
   <div class="col"
        :class=colClass
        :style=colStyle>
-    <div style="width:100%; height: 100%; border: 1px solid red;">15131</div>
     <slot>
     </slot>
   </div>

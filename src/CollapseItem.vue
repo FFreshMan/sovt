@@ -3,10 +3,18 @@
     <div class="title" @click="onShow">
       {{title}}
     </div>
-    <div class="content" v-if="open">
-      <slot>
-      </slot>
-    </div>
+    <transition name="slide"
+                v-on:before-enter="beforeEnter"
+                v-on:enter="enter"
+                v-on:after-enter="afterEnter"
+                v-on:before-leave="beforeLeave"
+                v-on:leave="leave"
+                v-on:after-leave="afterLeave">
+      <div class="content" v-if="open">
+        <slot>
+        </slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -28,38 +36,90 @@
         open: false,
       };
     },
+    computed: {},
     inject: ['eventBus'],
     mounted() {
-       this.eventBus.$on('update:selected', (names) => {
-        if (names.indexOf(this.name)>=0 ) {
-         this.open=true
+      this.eventBus.$on('update:selected', (names) => {
+        if (names.indexOf(this.name) >= 0) {
+          this.open = true;
         } else {
-          this.open=false
+          this.open = false;
         }
       });
     },
     methods: {
-      onShow() {
-        if (this.open) {
-          this.eventBus.$emit('update:removeSelected',this.name)
-        } else
-          this.eventBus.$emit('update:addSelected', this.name);
+      beforeEnter(el) {
+        if (!el.dataset) el.dataset = {};
+        el.style.paddingTop = '6px';
+        el.style.paddingBottom ='6px';
+        el.dataset.oldPaddingTop = el.style.paddingTop;
+        el.dataset.oldPaddingBottom = el.style.paddingBottom;
+        el.style.height = '0';
+        el.style.paddingTop = 0;
+        el.style.paddingBottom = 0;
+      },
+
+      enter(el, done) {
+        el.dataset.oldOverflow = el.style.overflow;
+        if (el.scrollHeight !== 0) {
+          el.style.height = el.scrollHeight +
+            parseInt(el.dataset.oldPaddingTop.slice(0,1)) +
+            parseInt(el.dataset.oldPaddingBottom .slice(0,1))+ 'px';
+          el.style.paddingTop = el.dataset.oldPaddingTop;
+          el.style.paddingBottom = el.dataset.oldPaddingBottom;
+          // done();
+        } else {
+          el.style.height = '';
+          el.style.paddingTop = el.dataset.oldPaddingTop;
+          el.style.paddingBottom = el.dataset.oldPaddingBottom;
+        }
+        el.style.overflow = 'hidden';
+      },
+
+      afterEnter(el) {
+        // for safari: remove class then reset height is necessary
+        el.style.height = '';
+        el.style.overflow = el.dataset.oldOverflow;
+      },
+
+      beforeLeave(el) {
+        if (!el.dataset) el.dataset = {};
+        el.dataset.oldPaddingTop = el.style.paddingTop;
+        el.dataset.oldPaddingBottom = el.style.paddingBottom;
+        el.dataset.oldOverflow = el.style.overflow;
+        el.style.height = el.scrollHeight + 'px';
+        el.style.overflow = 'hidden';
+      },
+
+      leave(el, done) {
+        if (el.scrollHeight !== 0) {
+          // for safari: add class after set height, or it will jump to zero height suddenly, weired
+          el.style.height = 0;
+          el.style.paddingTop = 0;
+          el.style.paddingBottom = 0;
         }
       },
+
+      afterLeave(el) {
+        el.style.height = '';
+        el.style.overflow = el.dataset.oldOverflow;
+        el.style.paddingTop = el.dataset.oldPaddingTop;
+        el.style.paddingBottom = el.dataset.oldPaddingBottom;
+      }
+      ,
+      onShow() {
+        if (this.open) {
+          this.eventBus.$emit('update:removeSelected', this.name);
+        } else
+          this.eventBus.$emit('update:addSelected', this.name);
+      }
+    },
   };
 </script>
 
 <style lang="scss" scoped>
   $grey: #ddd;
   $border-radius: 4px;
-  @keyframes shrink {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(50%);
-    }
-  }
 
   .collapse-item {
     > .title {
@@ -93,9 +153,14 @@
     }
 
     > .content {
-
-      padding: 8px;
+      transition: all 0.5s ease-in-out;
       border-bottom: 1px solid $grey;
+      /*overflow: hidden;*/
+      padding-top: 6px;
+      padding-bottom: 6px;
+
     }
+
   }
+
 </style>

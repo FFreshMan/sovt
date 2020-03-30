@@ -10,8 +10,8 @@
     </div>
     <pre>
       <code>
-        {{code}}
-      </code>
+      {{code}}
+    </code>
     </pre>
   </div>
 </template>
@@ -32,7 +32,8 @@
         <g-button :loading="true">默认按钮</g-button>
         <g-button icon="good">默认按钮</g-button>
         <g-button disabled>默认按钮</g-button>
-        `
+        `,
+        msg: 'Highlighted!'
       }
     }
   }

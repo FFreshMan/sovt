@@ -18,24 +18,23 @@
         visible: true
       };
     },
-    methods:{
-    }
+    methods: {}
 
   };
 </script>
 
 <style lang="scss" scoped>
   .sider {
-
+    position: relative;
   }
 
   .sider-fade-enter-active, .sider-fade-leave-active {
     transition: all .3s;
   }
 
-  .sider-fade-enter, .sider-fade-leave-to
-  {
-    margin-left: -71px;
+  .sider-fade-enter, .sider-fade-leave-to {
+    margin-left: -200px;
   }
+
   //自定义宽度需用户自己覆盖
 </style>
