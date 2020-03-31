@@ -1,7 +1,8 @@
 <template>
   <div class="collapse-item">
     <div class="title" @click="onShow">
-      {{title}}
+      <slot name="title">
+      </slot>
     </div>
     <transition name="slide"
                 v-on:before-enter="beforeEnter"

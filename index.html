@@ -49,7 +49,12 @@
 <div id="app">
     <g-collapse :selected="[]">
       <g-collapse-item name="c1" title="测试">
-      dddddd
+          <template slot="title" >
+            <div style="margin-left: 200px;">
+              sdddf
+            </div>
+          </template>
+        ceshi
     </g-collapse-item>
       <g-collapse-item name="c2" title="测试">
         dddddd
@@ -125,11 +130,11 @@
   <!--    <g-button icon="settings">-->
   <!--      按钮-->
   <!--    </g-button>-->
-  <!--    <g-button-group>-->
-  <!--      <g-button icon="left" icon-position="left">按钮</g-button>-->
-  <!--      <g-button icon="right" icon-position="right">按钮</g-button>-->
-  <!--      <g-button icon="right" icon-position="right">按钮</g-button>-->
-  <!--    </g-button-group>-->
+      <g-button-group>
+        <g-button icon="left" icon-position="left">按钮</g-button>
+        <g-button icon="right" icon-position="right">按钮</g-button>
+        <g-button icon="right" icon-position="right">按钮</g-button>
+      </g-button-group>
   <!--  </div>-->
   <!--  <div class="input" style="">-->
   <!--    <g-input value="111" style="margin-top: 20px;" @change="inputChange"></g-input>-->
