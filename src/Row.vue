@@ -47,7 +47,7 @@
     &.align-left {
       justify-content: flex-start;
     }
-    &.align-right{
+    &.align-center{
       justify-content: center;
     }
     &.align-right{

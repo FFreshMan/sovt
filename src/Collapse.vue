@@ -63,5 +63,6 @@
     border: 1px solid $border-color;
     border-bottom: none;
     border-radius: $border-radius;
+
   }
 </style>
