@@ -17,6 +17,7 @@
   .sider {
     position: relative;
     overflow: hidden;
+    min-height: 100%;
   }
 
   .sider-fade-enter-active, .sider-fade-leave-active {
