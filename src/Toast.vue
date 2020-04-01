@@ -91,7 +91,7 @@
 <style lang="scss" scoped>
   $font-size: 14px;
   $toast-height: 40px;
-  $toast-bg: rgba(0, 0, 0, 0.75);
+  $toast-bg: rgba(0, 0, 0, 0.6);
   $toast-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   @keyframes fade-in {
     0% {opacity: 0;}
@@ -112,6 +112,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 100;
     $animation-duration: 300ms;
 
     > .toast {

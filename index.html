@@ -47,7 +47,7 @@
 </head>
 <body>
 <div id="app">
-
+  <g-button @click="showToast"></g-button>
   <!--  <g-row gutter="40" align="left">-->
   <!--    <g-col span="6" offset="1" :ipad="{span:2,offset:3}">-->
   <!--      <div class="demo demo2">-->
@@ -68,30 +68,30 @@
   <!--    </g-col>-->
   <!--  </g-row>-->
 
-  <!--    <g-collapse :selected="[]">-->
-  <!--      <g-collapse-item name="c1" title="测试">-->
-  <!--          <template slot="title" >-->
-  <!--            <div style="margin-left: 200px;">-->
-  <!--              sdddf-->
-  <!--            </div>-->
-  <!--          </template>-->
-  <!--        ceshi-->
-  <!--    </g-collapse-item>-->
-  <!--      <g-collapse-item name="c2" title="测试">-->
-  <!--        dddddd-->
-  <!--      </g-collapse-item>-->
-  <!--    </g-collapse>-->
-  <!--  <g-collapse :selected.sync="selectedTab" single >-->
-  <!--    <g-collapse-item title="标题1" name="1">-->
-  <!--      第一-->
-  <!--    </g-collapse-item>-->
-  <!--    <g-collapse-item title="标题2" name="2">-->
-  <!--      第二-->
-  <!--    </g-collapse-item>-->
-  <!--    <g-collapse-item title="标题3" name="3">-->
-  <!--      第三-->
-  <!--    </g-collapse-item>-->
-  <!--  </g-collapse>-->
+      <g-collapse :selected="[]">
+        <g-collapse-item name="c1" title="测试">
+            <template slot="title" >
+              <div style="margin-left: 200px;">
+                sdddf
+              </div>
+            </template>
+          ceshi
+      </g-collapse-item>
+        <g-collapse-item name="c2" title="测试">
+          dddddd
+        </g-collapse-item>
+      </g-collapse>
+    <g-collapse :selected.sync="selectedTab" single >
+      <g-collapse-item title="标题1" name="1">
+        第一
+      </g-collapse-item>
+      <g-collapse-item title="标题2" name="2">
+        第二
+      </g-collapse-item>
+      <g-collapse-item title="标题3" name="3">
+        第三
+      </g-collapse-item>
+    </g-collapse>
 <!--    <g-popover position="right">-->
 <!--      <template slot="content" slot-scope="{close}">-->
 <!--        通过slot-scope可以得到返回值-->
@@ -118,20 +118,20 @@
 <!--      </template>-->
 <!--      <g-button>点点</g-button>-->
 <!--    </g-popover>-->
-    <g-tabs :selected.sync="section" direction="horizontal" >
-      <g-tabs-head >
-  <!--      会和内部class叠加-->
-        <template slot="actions">{{section}}</template>
-        <g-tabs-item name="tab1" :disabled="true">tab1</g-tabs-item>
-        <g-tabs-item name="tab2">tab2</g-tabs-item>
-        <g-tabs-item name="tab3">tab3</g-tabs-item>
-      </g-tabs-head>
-        <g-tabs-body>
-          <g-tabs-pane name="tab1">tp1</g-tabs-pane>
-          <g-tabs-pane name="tab2">tp2</g-tabs-pane>
-          <g-tabs-pane name="tab3">tp3</g-tabs-pane>
-        </g-tabs-body>
-    </g-tabs>
+<!--    <g-tabs :selected.sync="section" direction="horizontal" >-->
+<!--      <g-tabs-head >-->
+<!--  &lt;!&ndash;      会和内部class叠加&ndash;&gt;-->
+<!--        <template slot="actions">{{section}}</template>-->
+<!--        <g-tabs-item name="tab1" :disabled="true">tab1</g-tabs-item>-->
+<!--        <g-tabs-item name="tab2">tab2</g-tabs-item>-->
+<!--        <g-tabs-item name="tab3">tab3</g-tabs-item>-->
+<!--      </g-tabs-head>-->
+<!--        <g-tabs-body>-->
+<!--          <g-tabs-pane name="tab1">tp1</g-tabs-pane>-->
+<!--          <g-tabs-pane name="tab2">tp2</g-tabs-pane>-->
+<!--          <g-tabs-pane name="tab3">tp3</g-tabs-pane>-->
+<!--        </g-tabs-body>-->
+<!--    </g-tabs>-->
   <!--  <button @click="showToast">111111</button>-->
 <!--  <g-layout style="height: 100vh;">-->
 <!--    <g-sider class="demo" v-if="visible">sider-->

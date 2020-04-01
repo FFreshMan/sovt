@@ -62,7 +62,7 @@ new Vue({
           },
         },
         enableHtml: true,
-        position:'middle',
+        position:'top',
         autoClose: false
       })
     },

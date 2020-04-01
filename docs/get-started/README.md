@@ -7,6 +7,7 @@
 
 ```js
 import {Button,Collapse} from 'sovt'
+import 'sovt/dist/index.css'
 import Vue from 'vue'
 new Vue({
   el: '#app',
