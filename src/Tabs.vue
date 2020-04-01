@@ -46,6 +46,9 @@
             }
           })
         }
+      });
+      this.eventBus.$on('update:selected',(name,vm)=>{
+        this.$emit('update:selected',name)
       })
     }
   };

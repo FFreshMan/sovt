@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-header">
+  <div class="tabs-header" ref="header">
     <slot>
     </slot>
     <div class="line" ref="line"></div>
@@ -17,8 +17,9 @@
     mounted() {
       this.eventBus.$on('update:selected', (name, vm) => {
         let {width, height, top, left} = vm.$el.getBoundingClientRect();
+        let headerLeft=this.$refs.header.getBoundingClientRect().left;
         this.$refs.line.style.width = `${width}px`;
-        this.$refs.line.style.left = `${left}px`;
+        this.$refs.line.style.left = `${left-headerLeft}px`;
       });
 
       // this.$emit('update:selected', 'head');

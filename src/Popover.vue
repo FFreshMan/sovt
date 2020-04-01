@@ -2,7 +2,7 @@
   <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible"
          :class="{[`position-${position}`]:true}">
-      <slot name="content" :zero="close">
+      <slot name="content" :close="close">
       </slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block;">
@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
   export default {
     name: 'g-popover',
     data() {
@@ -48,7 +48,7 @@
         this.$refs.popover.addEventListener('mouseleave', this.close);
       }
     },
-    destroyed(): void {
+    destroyed() {
       if (this.trigger === 'click') {
         this.$refs.popover.removeEventListener('click', this.onClick);
       } else {

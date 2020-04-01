@@ -62,7 +62,6 @@
     padding: 0 1em;
     border-radius: $border-radius;
     border: 1px solid $border-color;
-    background: $button-bg;
     display: inline-flex;
     justify-content: center;
     align-items: center;

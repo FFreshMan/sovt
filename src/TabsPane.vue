@@ -40,7 +40,6 @@
     display: none;
     &.active{
       display: block;
-      color: red;
     }
   }
 </style>
