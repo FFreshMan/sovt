@@ -10,7 +10,8 @@
     <template v-if="error">
       <Icon name="warning" class="error-icon">
       </Icon>
-      <span class="error-message">{{error}}</span></template>
+      <span class="error-message">{{error}}</span>
+    </template>
   </div>
 </template>
 

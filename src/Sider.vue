@@ -1,11 +1,8 @@
 <template>
   <transition name="sider-fade" mode="out-in">
-    <div class="sider" v-if="visible">
+    <div class="sider">
       <slot>
       </slot>
-      <button @click="visible=false">
-        close
-      </button>
     </div>
   </transition>
 </template>
@@ -13,27 +10,21 @@
 <script lang="ts">
   export default {
     name: 'g-sider',
-    data() {
-      return {
-        visible: true
-      };
-    },
-    methods: {}
-
   };
 </script>
 
 <style lang="scss" scoped>
   .sider {
     position: relative;
+    overflow: hidden;
   }
 
   .sider-fade-enter-active, .sider-fade-leave-active {
-    transition: all .3s;
+    transition: all 1s;
   }
 
   .sider-fade-enter, .sider-fade-leave-to {
-    margin-left: -200px;
+    margin-left: -34px;
   }
 
   //自定义宽度需用户自己覆盖

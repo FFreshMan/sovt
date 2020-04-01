@@ -46,7 +46,8 @@ new Vue({
   data: {
     isLoading: false,
     message:'hi',
-    selectedTab:['1','2','3']
+    selectedTab:['1','2','3'],
+    visible:true
   },
   created(){
 
@@ -66,6 +67,9 @@ new Vue({
     },
     yyy(name){
       console.log(name)
+    },
+    oninput(value){
+      this.message=value
     }
   },
   el: '#app',

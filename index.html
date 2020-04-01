@@ -37,10 +37,10 @@
     /*  margin-bottom: 30px;*/
     /*}*/
 
-    /*.demo {*/
-    /*  border: 1px solid #666;*/
-    /*  min-height: 100px;*/
-    /*}*/
+    .demo {
+      border: 1px solid #666;
+      min-height: 100px;
+    }
 
 
   </style>
@@ -48,25 +48,25 @@
 <body>
 <div id="app">
 
-  <g-row gutter="40" align="left">
-    <g-col span="6" offset="1" :ipad="{span:2,offset:3}">
-      <div class="demo demo2">
-        <div style="height: 20px;border: 1px solid;background: red;">
-          ddd
-        </div>
-      </div>
-    </g-col>
-    <g-col span="6">
-      <div class="demo demo2"><div style="height: 20px;border: 1px solid;">
-        ddd
-      </div></div>
-    </g-col>
-    <g-col span="6">
-      <div class="demo demo2"><div style="height: 20px;border: 1px solid;">
-        ddd
-      </div></div>
-    </g-col>
-  </g-row>
+  <!--  <g-row gutter="40" align="left">-->
+  <!--    <g-col span="6" offset="1" :ipad="{span:2,offset:3}">-->
+  <!--      <div class="demo demo2">-->
+  <!--        <div style="height: 20px;border: 1px solid;background: red;">-->
+  <!--          ddd-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </g-col>-->
+  <!--    <g-col span="6">-->
+  <!--      <div class="demo demo2"><div style="height: 20px;border: 1px solid;">-->
+  <!--        ddd-->
+  <!--      </div></div>-->
+  <!--    </g-col>-->
+  <!--    <g-col span="6">-->
+  <!--      <div class="demo demo2"><div style="height: 20px;border: 1px solid;">-->
+  <!--        ddd-->
+  <!--      </div></div>-->
+  <!--    </g-col>-->
+  <!--  </g-row>-->
 
   <!--    <g-collapse :selected="[]">-->
   <!--      <g-collapse-item name="c1" title="测试">-->
@@ -133,14 +133,17 @@
   <!--      </g-tabs-body>-->
   <!--  </g-tabs>-->
   <!--  <button @click="showToast">111111</button>-->
-  <!--  <g-layout style="height: 100vh;">-->
-  <!--    <g-sider class="demo">sider</g-sider>-->
-  <!--    <g-layout>-->
-  <!--      <g-header class="demo">header</g-header>-->
-  <!--      <g-content class="demo">content</g-content>-->
-  <!--      <g-footer class="demo">footer</g-footer>-->
-  <!--    </g-layout>-->
-  <!--  </g-layout>-->
+  <g-layout style="height: 100vh;">
+    <g-sider class="demo" v-if="visible">sider
+     </g-sider>
+    <g-layout>
+      <g-header class="demo">header
+        <g-button @click="visible=!visible"></g-button>
+      </g-header>
+      <g-content class="demo">content</g-content>
+      <g-footer class="demo">footer</g-footer>
+    </g-layout>
+  </g-layout>
   <!--  <div class="button">-->
   <!--    <g-button icon="settings" icon-position="right" :loading="isLoading" @click="isLoading=!isLoading">-->
   <!--      按钮-->
@@ -157,17 +160,20 @@
   <!--        <g-button icon="right" icon-position="right">按钮</g-button>-->
   <!--      </g-button-group>-->
   <!--  </div>-->
-  <!--  <div class="input" style="">-->
-  <!--    <g-input value="111" style="margin-top: 20px;" @change="inputChange"></g-input>-->
-  <!--    <g-input value="111" style="margin-top: 20px;" disabled></g-input>-->
-  <!--    <g-input value="111" style="margin-top: 20px;" readonly></g-input>-->
-  <!--    <g-input value="111" style="margin-top: 20px;" error="xxx"></g-input>-->
-  <!--  </div>-->
-<!--    <g-row gutter="10" align="left">-->
-<!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
-<!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
-<!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
-<!--      </g-row>-->
+  <!--    <div class="input" >-->
+  <!--      <g-input :value="message" style="margin-top: 20px;" @input="oninput"></g-input>-->
+  <!--      <div>-->
+  <!--        {{message}}-->
+  <!--      </div>-->
+  <!--      <g-input value="111" style="margin-top: 20px;" disabled></g-input>-->
+  <!--      <g-input value="111" style="margin-top: 20px;" readonly></g-input>-->
+  <!--      <g-input value="111" style="margin-top: 20px;" error="xxx"></g-input>-->
+  <!--    </div>-->
+  <!--    <g-row gutter="10" align="left">-->
+  <!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
+  <!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
+  <!--      <g-col span="24" :PC="{span:12}" ></g-col>-->
+  <!--      </g-row>-->
   <!--    <g-row gutter="6">-->
   <!--      <g-col span="6"></g-col>-->
   <!--      <g-col span="6"></g-col>-->
